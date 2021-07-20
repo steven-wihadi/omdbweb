@@ -8,30 +8,5 @@
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 80px;
-
-    .movie-card {
-      display: block;
-      width: 17%;
-      margin-bottom: 36px;
-      text-decoration: none;
-
-      .poster img {
-        width: 168px;
-        border-radius: 8px;
-      }
-
-      .movie-title {
-        display: block;
-        color: white;
-        font-weight: bold;
-        font-size: 16px;
-        word-wrap: break-word;
-      }
-
-      .release-date {
-        color: white;
-        font-size: 12px;
-      }
-    }
   }
 }

@@ -3,13 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 export const movieListParamsSetter = createSlice({
   name: 'movie-list-params',
   initialState: {
-    searchInput: 'Batman',
-    page: 1
+    searchInput: 'Batman'
   },
   reducers: {
-    nextPage: (state) => {
-      state.page += 1;
-    },
     setSearch: (state, e) => {
       state.searchInput = e.payload;
     }
@@ -17,7 +13,6 @@ export const movieListParamsSetter = createSlice({
 });
 
 export const {
-  nextPage,
   setSearch
 } = movieListParamsSetter.actions;
 

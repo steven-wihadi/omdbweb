@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 import { LandingService } from './landing.service';
 import './landing.scss';
 import store from '../../shared/redux/store';
+import MovieCard from './component/movie-card/movie-card';
 
 let totalData = 0;
 let isMaximum = false;
 
 function LandingPage() {
-
   let searchInput = useSelector((state) => state.movieListParams.searchInput);
   const [movieList, setMovieList] = useState([]);
   let [page, setPage] = useState(1);
@@ -52,17 +52,12 @@ function LandingPage() {
   };
 
   return (
-    <div className="landing-page-container" onScroll={onScroll}>
+    <div className="landing-page-container" onScroll={onScroll} data-testid="landing-page-container">
+      
       <div className="card-list-container">
         { movieList &&
           movieList.map((movie) => 
-            <a className="movie-card" target='_blank' key={ movie.imdbID }>
-              <div className="poster">
-                <img src={ movie.Poster }/>
-              </div>
-              <span className="movie-title">{ movie.Title }</span>
-              <span className="release-date">{ movie.Year }</span>
-            </a>
+            <MovieCard movie={movie} />
           )
         }
       </div>
