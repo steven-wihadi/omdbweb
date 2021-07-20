@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { LandingService } from './landing.service';
 import './landing.scss';
 import store from '../../shared/redux/store';
-import MovieCard from './component/movie-card/movie-card';
+import MovieCard from './components/movie-card/movie-card';
+import PopUpPoster from './components/pop-up-poster/pop-up-poster';
 
 let totalData = 0;
 let isMaximum = false;
@@ -36,11 +37,13 @@ function LandingPage() {
 
   const listenStoreChanges = () => {
     store.subscribe((res) => {
-      setPage(1);
-      isMaximum = false;
-      totalData = 0;
-      searchInput = store.getState().movieListParams.searchInput;
-      fetchList('reset-list');
+      if (searchInput !== store.getState().movieListParams.searchInput) {
+        setPage(1);
+        isMaximum = false;
+        totalData = 0;
+        searchInput = store.getState().movieListParams.searchInput;
+        fetchList('reset-list');
+      }
     });
   }
 
@@ -57,9 +60,10 @@ function LandingPage() {
       <div className="card-list-container">
         { movieList &&
           movieList.map((movie) => 
-            <MovieCard movie={movie} />
+            <MovieCard movie={movie} key={ movie.imdbID }/>
           )
         }
+        <PopUpPoster />
       </div>
     </div>
   );
