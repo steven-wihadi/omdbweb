@@ -19,7 +19,7 @@ function MovieCard({ movie }) {
           onClick={ () => { onClickPoster(movie.Poster) } }
         />
       </div>
-      <span className="movie-title" data-testid="movie-card-title">{ movie.Title }</span>
+      <a className="movie-title" href={ '/movie-detail/' + movie.imdbID } data-testid="movie-card-title">{ movie.Title }</a>
       <span className="release-date" data-testid="movie-card-year">{ movie.Year }</span>
     </div>
   );
